@@ -1,0 +1,530 @@
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, Ship, Users, Calculator } from 'lucide-react';
+
+const BaldeneyseePresentation = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    // Titelfolie
+    {
+      title: "Klassenausflug zum Ronsdorfer Stausee",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          <Ship className="w-32 h-32 text-blue-500" />
+          <h2 className="text-5xl font-bold text-blue-600">Klasse 5f</h2>
+          <p className="text-3xl text-gray-700">Paddeln & Mathematik</p>
+        </div>
+      )
+    },
+    // Szenario
+    {
+      title: "Das Szenario",
+      content: (
+        <div className="space-y-6 text-xl">
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <p className="font-semibold mb-3">Unser Plan:</p>
+            <ul className="space-y-2">
+              <li>🚣 Paddelboote am Ronsdorfer Stausee ausleihen</li>
+              <li>🏝️ Zur kleinen Insel paddeln</li>
+              <li>👥 Gemeinsam einen tollen Tag verbringen</li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    // Rudi und Peter
+    {
+      title: "Rudi und Peter",
+      content: (
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-8">
+            <div className="bg-green-50 p-6 rounded-lg text-center">
+              <div className="text-6xl mb-4">👨‍💼</div>
+              <h3 className="text-2xl font-bold mb-2">Rudi</h3>
+              <p className="text-lg">Nimmt Bestellungen auf und kassiert das Geld</p>
+            </div>
+            <div className="bg-yellow-50 p-6 rounded-lg text-center">
+              <div className="text-6xl mb-4">👨‍🔧</div>
+              <h3 className="text-2xl font-bold mb-2">Peter</h3>
+              <p className="text-lg">Gibt draußen die Boote aus</p>
+            </div>
+          </div>
+          <div className="bg-purple-50 p-4 rounded-lg text-center">
+            <p className="text-xl">⭐ Arbeiten seit 30 Jahren zusammen</p>
+            <p className="text-xl">⭐ Verstehen sich blind</p>
+          </div>
+        </div>
+      )
+    },
+    // Bootstypen
+    {
+      title: "Die Bootstypen",
+      content: (
+        <div className="space-y-6">
+          <p className="text-xl mb-6">Verfügbare Paddelboote:</p>
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-blue-100 p-6 rounded-lg text-center">
+              <Ship className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+              <p className="text-3xl font-bold">1</p>
+              <p className="text-lg">Sitz</p>
+            </div>
+            <div className="bg-blue-200 p-6 rounded-lg text-center">
+              <Ship className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+              <p className="text-3xl font-bold">2</p>
+              <p className="text-lg">Sitze</p>
+            </div>
+            <div className="bg-blue-300 p-6 rounded-lg text-center">
+              <Ship className="w-12 h-12 mx-auto mb-3 text-blue-600" />
+              <p className="text-3xl font-bold">4</p>
+              <p className="text-lg">Sitze</p>
+            </div>
+            <div className="bg-blue-400 p-6 rounded-lg text-center">
+              <Ship className="w-12 h-12 mx-auto mb-3 text-blue-700" />
+              <p className="text-3xl font-bold">8</p>
+              <p className="text-lg">Sitze</p>
+            </div>
+            <div className="bg-blue-500 p-6 rounded-lg text-center">
+              <Ship className="w-12 h-12 mx-auto mb-3 text-blue-800" />
+              <p className="text-3xl font-bold">16</p>
+              <p className="text-lg">Sitze</p>
+            </div>
+          </div>
+          <div className="bg-red-50 p-4 rounded-lg mt-6">
+            <p className="text-xl font-semibold text-center">⚠️ Regel: Von jedem Bootstyp wird nur 1x verliehen!</p>
+          </div>
+        </div>
+      )
+    },
+    // Aufgabe 1
+    {
+      title: "Aufgabe 1: 10 Schüler",
+      content: (
+        <div className="space-y-8">
+          <div className="bg-yellow-50 p-6 rounded-lg">
+            <Users className="w-12 h-12 mb-4 text-yellow-600" />
+            <p className="text-2xl font-semibold mb-4">10 Schüler wollen paddeln!</p>
+            <p className="text-xl">Welche Boote brauchen wir?</p>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg">
+            <p className="text-lg mb-4">💡 Denkt daran:</p>
+            <ul className="space-y-2 text-lg">
+              <li>✓ Von jedem Bootstyp gibt es nur 1 Exemplar</li>
+              <li>✓ Verfügbar: 1er, 2er, 4er, 8er, 16er Boote</li>
+            </ul>
+          </div>
+          <div className="text-center text-xl text-gray-500 mt-8">
+            <p>Lösung auf der nächsten Folie...</p>
+          </div>
+        </div>
+      )
+    },
+    // Lösung Aufgabe 1
+    {
+      title: "Lösung: 10 Schüler",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-green-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-6 text-center">1x 8er + 1x 2er = 10 Sitze</p>
+            <div className="flex justify-center items-center space-x-4">
+              <div className="bg-blue-400 p-4 rounded-lg text-center">
+                <Ship className="w-16 h-16 mx-auto mb-2 text-white" />
+                <p className="text-3xl font-bold text-white">8</p>
+              </div>
+              <span className="text-4xl">+</span>
+              <div className="bg-blue-200 p-4 rounded-lg text-center">
+                <Ship className="w-16 h-16 mx-auto mb-2 text-blue-600" />
+                <p className="text-3xl font-bold">2</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <p className="text-xl mb-4">Alternative Lösungen möglich?</p>
+            <p className="text-lg text-gray-700">1x 4er + 1x 4er + 1x 2er = geht NICHT (4er nur einmal verfügbar!)</p>
+          </div>
+        </div>
+      )
+    },
+    // Codierung
+    {
+      title: "Die Codierung für Peter",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-purple-50 p-6 rounded-lg">
+            <p className="text-xl mb-4">💡 Rudi und Peter haben ein System entwickelt:</p>
+            <p className="text-lg">Rudi sendet Peter einen Code, der sagt, welche Boote gebraucht werden.</p>
+          </div>
+          <div className="bg-gray-100 p-8 rounded-lg">
+            <p className="text-2xl font-bold mb-6 text-center">Beispiel: 10 Schüler</p>
+            <div className="grid grid-cols-5 gap-4 text-center">
+              <div>
+                <p className="text-sm mb-2">16er</p>
+                <div className="bg-red-200 p-4 rounded text-3xl font-bold">0</div>
+              </div>
+              <div>
+                <p className="text-sm mb-2">8er</p>
+                <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+              </div>
+              <div>
+                <p className="text-sm mb-2">4er</p>
+                <div className="bg-red-200 p-4 rounded text-3xl font-bold">0</div>
+              </div>
+              <div>
+                <p className="text-sm mb-2">2er</p>
+                <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+              </div>
+              <div>
+                <p className="text-sm mb-2">1er</p>
+                <div className="bg-red-200 p-4 rounded text-3xl font-bold">0</div>
+              </div>
+            </div>
+            <p className="text-3xl font-bold text-center mt-6 text-blue-600">Code: 01010</p>
+          </div>
+        </div>
+      )
+    },
+    // Schätzfrage
+    {
+      title: "Schätzfrage",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          <Ship className="w-32 h-32 text-orange-500" />
+          <div className="bg-orange-50 p-8 rounded-lg text-center max-w-2xl">
+            <p className="text-2xl font-bold mb-6">🤔 Für besondere Events haben Rudi und Peter noch ein größeres Paddelboot.</p>
+            <p className="text-3xl font-bold text-orange-600 mt-8">Wie groß ist dieses Boot?</p>
+            <p className="text-xl text-gray-600 mt-4">(Schätzt die Anzahl der Sitze!)</p>
+          </div>
+        </div>
+      )
+    },
+    // Jürgen auf der Insel
+    {
+      title: "Jürgen auf der Insel",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-green-50 p-6 rounded-lg text-center">
+            <div className="text-6xl mb-4">🏝️ 👨‍🦰</div>
+            <h3 className="text-2xl font-bold mb-2">Jürgen wartet auf der Insel</h3>
+            <p className="text-lg">Er betreut die Gäste auf der Insel</p>
+          </div>
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <p className="text-xl mb-4">📋 Jürgens Aufgabe:</p>
+            <ul className="space-y-2 text-lg">
+              <li>✓ Er sieht, welche Boote ankommen</li>
+              <li>✓ Er erkennt anhand der Boote die Gruppengröße</li>
+              <li>✓ Er notiert die Anzahl der Gäste</li>
+              <li>✓ So kann er sicherstellen, dass abends niemand vergessen wird</li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    // Aufgabe 2
+    {
+      title: "Aufgabe 2: Jürgens Rechnung",
+      content: (
+        <div className="space-y-8">
+          <div className="bg-yellow-50 p-6 rounded-lg">
+            <Calculator className="w-12 h-12 mb-4 text-yellow-600" />
+            <p className="text-2xl font-semibold mb-4">Jürgen sieht folgende Boote ankommen:</p>
+            <p className="text-4xl font-bold text-center text-blue-600 my-8">11011</p>
+            <p className="text-2xl font-semibold">Er notiert: 27 Gäste</p>
+          </div>
+          <div className="bg-gray-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-4 text-center">Wie rechnet Jürgen?</p>
+            <p className="text-lg text-center text-gray-600">💭 Überlegt gemeinsam...</p>
+          </div>
+        </div>
+      )
+    },
+    // Lösung Aufgabe 2
+    {
+      title: "Lösung: Jürgens Rechnung",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-green-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-6 text-center">Code: 11011 = 27 Gäste</p>
+            <div className="bg-white p-6 rounded-lg">
+              <div className="grid grid-cols-5 gap-4 text-center mb-6">
+                <div>
+                  <p className="text-sm mb-2">16er</p>
+                  <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+                  <p className="text-lg mt-2">= 16</p>
+                </div>
+                <div>
+                  <p className="text-sm mb-2">8er</p>
+                  <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+                  <p className="text-lg mt-2">= 8</p>
+                </div>
+                <div>
+                  <p className="text-sm mb-2">4er</p>
+                  <div className="bg-red-200 p-4 rounded text-3xl font-bold">0</div>
+                  <p className="text-lg mt-2">= 0</p>
+                </div>
+                <div>
+                  <p className="text-sm mb-2">2er</p>
+                  <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+                  <p className="text-lg mt-2">= 2</p>
+                </div>
+                <div>
+                  <p className="text-sm mb-2">1er</p>
+                  <div className="bg-green-200 p-4 rounded text-3xl font-bold">1</div>
+                  <p className="text-lg mt-2">= 1</p>
+                </div>
+              </div>
+              <p className="text-2xl font-bold text-center text-blue-600">16 + 8 + 0 + 2 + 1 = 27</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    // Das Binärsystem
+    {
+      title: "Das Binärsystem",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-purple-50 p-6 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">🎯 Was haben wir entdeckt?</h3>
+            <p className="text-xl mb-4">Das ist das <span className="font-bold text-purple-600">Binärsystem</span> (Zweiersystem)!</p>
+          </div>
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <p className="text-xl mb-4">💡 Wichtige Eigenschaften:</p>
+            <ul className="space-y-3 text-lg">
+              <li>✓ Nur zwei Ziffern: <span className="font-bold">0</span> und <span className="font-bold">1</span></li>
+              <li>✓ Jede Position hat einen festen Wert: 1, 2, 4, 8, 16, 32...</li>
+              <li>✓ Jeder Wert ist doppelt so groß wie der vorherige</li>
+              <li>✓ Eine <span className="font-bold">1</span> bedeutet: "Boot wird verwendet"</li>
+              <li>✓ Eine <span className="font-bold">0</span> bedeutet: "Boot wird NICHT verwendet"</li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    // Übungsaufgaben 1
+    {
+      title: "Übungsaufgaben - Teil 1",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-yellow-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-6">Rechne aus:</p>
+            <div className="space-y-4 text-xl">
+              <div className="bg-white p-4 rounded">
+                <p>1. Code: <span className="font-bold text-blue-600">10101</span> = ? Gäste</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>2. Code: <span className="font-bold text-blue-600">11111</span> = ? Gäste</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>3. Code: <span className="font-bold text-blue-600">10000</span> = ? Gäste</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>4. Code: <span className="font-bold text-blue-600">01110</span> = ? Gäste</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-lg">💭 Arbeitet in Partnerarbeit!</p>
+          </div>
+        </div>
+      )
+    },
+    // Übungsaufgaben 2
+    {
+      title: "Übungsaufgaben - Teil 2",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-orange-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-6">Welche Boote brauchen wir?</p>
+            <div className="space-y-4 text-xl">
+              <div className="bg-white p-4 rounded">
+                <p>5. <span className="font-bold text-purple-600">7 Schüler</span> wollen paddeln</p>
+                <p className="text-sm text-gray-600 mt-2">→ Welcher Code? Welche Boote?</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>6. <span className="font-bold text-purple-600">15 Schüler</span> wollen paddeln</p>
+                <p className="text-sm text-gray-600 mt-2">→ Welcher Code? Welche Boote?</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>7. <span className="font-bold text-purple-600">20 Schüler</span> wollen paddeln</p>
+                <p className="text-sm text-gray-600 mt-2">→ Welcher Code? Welche Boote?</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-blue-50 p-4 rounded-lg">
+            <p className="text-lg">💡 Tipp: Beginne mit dem größten Boot!</p>
+          </div>
+        </div>
+      )
+    },
+    // Übungsaufgaben 3
+    {
+      title: "Übungsaufgaben - Teil 3",
+      content: (
+        <div className="space-y-6">
+          <div className="bg-pink-50 p-6 rounded-lg">
+            <p className="text-2xl font-bold mb-6">Knifflige Aufgaben:</p>
+            <div className="space-y-4 text-xl">
+              <div className="bg-white p-4 rounded">
+                <p>8. Code: <span className="font-bold text-blue-600">11001</span> = ? Gäste</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>9. Code: <span className="font-bold text-blue-600">10011</span> = ? Gäste</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>10. <span className="font-bold text-purple-600">25 Schüler</span> → Welcher Code?</p>
+              </div>
+              <div className="bg-white p-4 rounded">
+                <p>11. <span className="font-bold text-purple-600">13 Schüler</span> → Welcher Code?</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-lg">🎯 Für schnelle Schüler!</p>
+          </div>
+        </div>
+      )
+    },
+    // Lösungen 1
+    {
+      title: "Lösungen - Teil 1",
+      content: (
+        <div className="space-y-4">
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">1. <span className="font-bold">10101</span> = 16 + 4 + 1 = <span className="text-green-600 font-bold">21 Gäste</span></p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">2. <span className="font-bold">11111</span> = 16 + 8 + 4 + 2 + 1 = <span className="text-green-600 font-bold">31 Gäste</span></p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">3. <span className="font-bold">10000</span> = 16 = <span className="text-green-600 font-bold">16 Gäste</span></p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">4. <span className="font-bold">01110</span> = 8 + 4 + 2 = <span className="text-green-600 font-bold">14 Gäste</span></p>
+          </div>
+        </div>
+      )
+    },
+    // Lösungen 2
+    {
+      title: "Lösungen - Teil 2",
+      content: (
+        <div className="space-y-4">
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">5. <span className="font-bold">7 Schüler</span> = 4 + 2 + 1</p>
+            <p className="text-lg">Code: <span className="text-green-600 font-bold">00111</span> (1x 4er, 1x 2er, 1x 1er)</p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">6. <span className="font-bold">15 Schüler</span> = 8 + 4 + 2 + 1</p>
+            <p className="text-lg">Code: <span className="text-green-600 font-bold">01111</span> (1x 8er, 1x 4er, 1x 2er, 1x 1er)</p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">7. <span className="font-bold">20 Schüler</span> = 16 + 4</p>
+            <p className="text-lg">Code: <span className="text-green-600 font-bold">10100</span> (1x 16er, 1x 4er)</p>
+          </div>
+        </div>
+      )
+    },
+    // Lösungen 3
+    {
+      title: "Lösungen - Teil 3",
+      content: (
+        <div className="space-y-4">
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">8. <span className="font-bold">11001</span> = 16 + 8 + 1 = <span className="text-green-600 font-bold">25 Gäste</span></p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">9. <span className="font-bold">10011</span> = 16 + 2 + 1 = <span className="text-green-600 font-bold">19 Gäste</span></p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">10. <span className="font-bold">25 Schüler</span> = 16 + 8 + 1</p>
+            <p className="text-lg">Code: <span className="text-green-600 font-bold">11001</span> (1x 16er, 1x 8er, 1x 1er)</p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="text-xl mb-2">11. <span className="font-bold">13 Schüler</span> = 8 + 4 + 1</p>
+            <p className="text-lg">Code: <span className="text-green-600 font-bold">01101</span> (1x 8er, 1x 4er, 1x 1er)</p>
+          </div>
+        </div>
+      )
+    },
+    // Ende
+    {
+      title: "Zusammenfassung",
+      content: (
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-lg max-w-3xl">
+            <h3 className="text-3xl font-bold mb-6 text-center text-blue-600">Was haben wir gelernt?</h3>
+            <ul className="space-y-4 text-xl">
+              <li>✓ Das Binärsystem nutzt nur 0 und 1</li>
+              <li>✓ Jede Position hat einen Stellenwert (1, 2, 4, 8, 16...)</li>
+              <li>✓ Computer nutzen genau dieses System!</li>
+              <li>✓ Mit binären Codes kann man Informationen übertragen</li>
+            </ul>
+          </div>
+          <div className="text-4xl">🚣 🏝️ 🎉</div>
+        </div>
+      )
+    }
+  ];
+
+  const nextSlide = () => {
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  return (
+    <div className="w-full h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex flex-col">
+      {/* Header */}
+      <div className="bg-blue-600 text-white p-4 shadow-lg">
+        <h1 className="text-2xl font-bold text-center">{slides[currentSlide].title}</h1>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 p-8 overflow-auto">
+        <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-2xl p-12 h-full">
+          {slides[currentSlide].content}
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="bg-gray-800 text-white p-4 flex justify-between items-center">
+        <button
+          onClick={prevSlide}
+          disabled={currentSlide === 0}
+          className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+            currentSlide === 0
+              ? 'bg-gray-600 cursor-not-allowed opacity-50'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+        >
+          <ChevronLeft className="w-5 h-5" />
+          <span>Zurück</span>
+        </button>
+
+        <div className="text-lg font-semibold">
+          Folie {currentSlide + 1} von {slides.length}
+        </div>
+
+        <button
+          onClick={nextSlide}
+          disabled={currentSlide === slides.length - 1}
+          className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+            currentSlide === slides.length - 1
+              ? 'bg-gray-600 cursor-not-allowed opacity-50'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+        >
+          <span>Weiter</span>
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default BaldeneyseePresentation;
